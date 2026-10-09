@@ -20,7 +20,9 @@ export enum DocStatus {
   Failed = 'failed',
 }
 
-export type DocType = 'PDF' | 'DOCX' | 'TXT' | 'MD';
+export const DOC_TYPES = ['PDF', 'DOCX', 'TXT', 'MD'] as const;
+
+export type DocType = (typeof DOC_TYPES)[number];
 
 export interface Document {
   id: string;
@@ -30,4 +32,10 @@ export interface Document {
   size: string;
   status: DocStatus;
   updatedAt: string;
+}
+
+export interface DocumentUploadFormValues {
+  title: string;
+  category: DocCategory;
+  file: FileList;
 }
