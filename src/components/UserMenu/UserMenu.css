@@ -1,0 +1,179 @@
+.user-menu {
+  position: relative;
+}
+
+/* Trigger */
+.user-menu__trigger {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+
+  padding: 6px 8px 6px 6px;
+
+  border: 0;
+  border-radius: 8px;
+
+  background: transparent;
+  color: #334155;
+
+  font: inherit;
+  cursor: pointer;
+
+  transition: background-color 150ms ease;
+}
+
+.user-menu__trigger:hover {
+  background: #f1f5f9;
+}
+
+.user-menu__name {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* Avatar */
+.user-menu__avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 32px;
+  height: 32px;
+
+  flex: 0 0 32px;
+
+  border-radius: 50%;
+
+  background: #e0e7ff;
+  color: #4f46e5;
+
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.user-menu__avatar--large {
+  width: 40px;
+  height: 40px;
+
+  flex-basis: 40px;
+
+  font-size: 14px;
+}
+
+/* Chevron */
+.user-menu__chevron {
+  color: #94a3b8;
+
+  transition: transform 150ms ease;
+}
+
+.user-menu__chevron--open {
+  transform: rotate(180deg);
+}
+
+/* Dropdown */
+.user-menu__dropdown {
+  position: absolute;
+  z-index: 100;
+
+  top: calc(100% + 8px);
+  right: 0;
+
+  width: 240px;
+
+  padding: 6px;
+
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+
+  box-shadow:
+    0 10px 15px -3px rgb(15 23 42 / 0.08),
+    0 4px 6px -4px rgb(15 23 42 / 0.08);
+}
+
+/* Profile */
+
+.user-menu__profile {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 10px;
+}
+
+.user-menu__profile-info {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.user-menu__profile-info strong {
+  color: #0f172a;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.user-menu__profile-info span {
+  margin-top: 2px;
+
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+
+  color: #94a3b8;
+  font-size: 12px;
+}
+
+/* Divider */
+
+.user-menu__divider {
+  height: 1px;
+  margin: 6px 4px;
+
+  background: #e2e8f0;
+}
+
+/* Menu item */
+
+.user-menu__item {
+  display: flex;
+  align-items: center;
+
+  width: 100%;
+  min-height: 38px;
+
+  padding: 0 10px;
+
+  border: 0;
+  border-radius: 7px;
+
+  background: transparent;
+
+  color: #475569;
+  font: inherit;
+  font-size: 14px;
+
+  text-decoration: none;
+  text-align: left;
+
+  cursor: pointer;
+
+  transition:
+    background-color 150ms ease,
+    color 150ms ease;
+}
+
+.user-menu__item:hover {
+  background: #f8fafc;
+  color: #0f172a;
+}
+
+.user-menu__item--danger {
+  color: #dc2626;
+}
+
+.user-menu__item--danger:hover {
+  background: #fef2f2;
+  color: #b91c1c;
+}
