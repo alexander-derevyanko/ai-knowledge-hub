@@ -24,11 +24,6 @@ const SIDEBAR_CONFIG: SidebarItem[] = [
     path: '/chat',
     icon: '',
   },
-  {
-    name: 'Settings',
-    path: '/settings',
-    icon: '',
-  },
 ];
 
 export default function Sidebar() {

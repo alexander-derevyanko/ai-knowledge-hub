@@ -1,10 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import './UserMenu.css';
-
-const App = () => {
-console.log();
-return <div className="app">Hello world</div>
-}
+import { NavLink } from 'react-router';
 
 export default function UserMenu() {
   const [isOpen, setIsOpen] = useState(false);
@@ -72,7 +68,9 @@ export default function UserMenu() {
           </a>
 
           <a href="/settings" className="user-menu__item" role="menuitem">
-            <span>Settings</span>
+            <NavLink to="/settings">
+              <span>Settings</span>
+            </NavLink>
           </a>
 
           <div className="user-menu__divider" />
