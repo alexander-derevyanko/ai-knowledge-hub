@@ -1,4 +1,4 @@
-export const enum DocCategory {
+export enum DocCategory {
   Architecture = 'architecture',
   Development = 'development',
   AI = 'ai',
@@ -7,7 +7,14 @@ export const enum DocCategory {
   Security = 'security',
 }
 
-export const enum DocStatus {
+export enum DocSortOption {
+  Newest = 'newest',
+  Oldest = 'oldest',
+  TitleAsc = 'title-asc',
+  TitleDesc = 'title-desc',
+}
+
+export enum DocStatus {
   Ready = 'ready',
   Processing = 'processing',
   Failed = 'failed',
