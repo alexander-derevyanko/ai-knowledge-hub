@@ -97,12 +97,14 @@ export default function DocumentsPage() {
   return (
     <div className="documents">
       <header className="documents__header">
-        <div>
+        <div className="documents__header-top">
           <h1>Documents</h1>
+
           <button className="documents__upload-button" onClick={() => setIsUploadModalOpen(true)}>
             Upload Document
           </button>
         </div>
+
         <p>Manage and browse your knowledge base</p>
       </header>
 

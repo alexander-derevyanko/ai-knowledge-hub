@@ -63,15 +63,23 @@ export default function UserMenu() {
 
           <div className="user-menu__divider" />
 
-          <a href="/profile" className="user-menu__item" role="menuitem">
-            <span>Profile</span>
-          </a>
+          <NavLink
+            to="/profile"
+            className="user-menu__item"
+            role="menuitem"
+            onClick={() => setIsOpen(false)}
+          >
+            Profile
+          </NavLink>
 
-          <a href="/settings" className="user-menu__item" role="menuitem">
-            <NavLink to="/settings">
-              <span>Settings</span>
-            </NavLink>
-          </a>
+          <NavLink
+            to="/settings"
+            className="user-menu__item"
+            role="menuitem"
+            onClick={() => setIsOpen(false)}
+          >
+            Settings
+          </NavLink>
 
           <div className="user-menu__divider" />
 
@@ -79,10 +87,7 @@ export default function UserMenu() {
             type="button"
             className="user-menu__item user-menu__item--danger"
             role="menuitem"
-            onClick={() => {
-              console.log('Logout');
-              setIsOpen(false);
-            }}
+            onClick={() => setIsOpen(false)}
           >
             Sign out
           </button>

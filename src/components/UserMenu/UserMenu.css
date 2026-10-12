@@ -139,26 +139,23 @@
 .user-menu__item {
   display: flex;
   align-items: center;
-
   width: 100%;
   min-height: 38px;
-
   padding: 0 10px;
 
+  box-sizing: border-box;
   border: 0;
   border-radius: 7px;
 
   background: transparent;
-
   color: #475569;
+
   font: inherit;
   font-size: 14px;
-
   text-decoration: none;
   text-align: left;
 
   cursor: pointer;
-
   transition:
     background-color 150ms ease,
     color 150ms ease;
@@ -167,6 +164,13 @@
 .user-menu__item:hover {
   background: #f8fafc;
   color: #0f172a;
+  text-decoration: none;
+}
+
+.user-menu__item.active {
+  background: #eef2ff;
+  color: #4f46e5;
+  font-weight: 500;
 }
 
 .user-menu__item--danger {

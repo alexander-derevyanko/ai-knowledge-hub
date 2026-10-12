@@ -16,7 +16,7 @@ export const DASHBOARD_STATS = [
     value: 42,
   },
   {
-    id: DashboardStats.Questions,
+    id: DashboardStats.Storage,
     title: 'Storage',
     value: '2.4 GB',
   },
