@@ -5,7 +5,7 @@ import DashboardPage from '../features/dashboard/DashboardPage';
 import DocumentsPage from '../features/documents/DocumentsPage';
 import ChatPage from '../features/chat/ChatPage';
 import SettingsPage from '../features/settings/SettingsPage';
-import NotFoundPage from '../components/NotFoundPage/NotFoundPage';
+import NotFoundPage from '../pages/NotFoundPage/NotFoundPage';
 
 export const router = createBrowserRouter([
   {
