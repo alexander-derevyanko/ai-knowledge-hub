@@ -1,83 +1,25 @@
 import { useState } from 'react';
 import './ChatPage.css';
-import type { ChatMessageItem } from './types/chat';
 import ChatMessage from './components/ChatMessage/ChatMessage';
-import { mockChatService } from './services/mockChatService';
+import { useChat } from './hooks/useChat';
 
 export default function ChatPage() {
-  const [messages, setMessages] = useState<ChatMessageItem[]>([]);
+  const { messages, isLoading, sendMessage, retryMessage } = useChat();
+
   const [inputValue, setInputValue] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
 
-  const simulateAIResponse = async (newMessage: ChatMessageItem) => {
-    setIsLoading(true);
+  const handleSubmit = async (e: React.SubmitEvent<HTMLFormElement>) => {
+    e.preventDefault();
 
-    try {
-      const aiResponse = await mockChatService(newMessage.content);
-
-      if (!aiResponse) {
-        throw new Error('No response from AI service');
-      }
-
-      const aiMessage: ChatMessageItem = {
-        id: aiResponse.id,
-        content: aiResponse.content,
-        sender: 'assistant',
-        timestamp: aiResponse.timestamp,
-        sources: aiResponse.sources,
-      };
-
-      setMessages((prevMessages) => [...prevMessages, aiMessage]);
-    } catch (error) {
-      console.error('Something went wrong. Please try again.', error);
-
-      setMessages((prevMessages) =>
-        prevMessages.map((message) =>
-          message.id === newMessage.id ? { ...message, hasError: true } : message,
-        ),
-      );
-    } finally {
-      setIsLoading(false);
-    }
-  };
-
-  const handleSendMessage = async () => {
     const question = inputValue.trim();
 
-    if (question === '') {
+    if (!question || isLoading) {
       return;
     }
 
-    const newMessage: ChatMessageItem = {
-      id: crypto.randomUUID(),
-      content: question,
-      sender: 'user',
-      timestamp: new Date().toISOString(),
-    };
-
-    setMessages((prevMessages) => [...prevMessages, newMessage]);
     setInputValue('');
 
-    await simulateAIResponse(newMessage);
-  };
-
-  const handleRetry = async (messageId: string) => {
-    const failedMessage = messages.find((message) => message.id === messageId);
-
-    if (!failedMessage || isLoading) {
-      return;
-    }
-
-    const retryMessage: ChatMessageItem = {
-      ...failedMessage,
-      hasError: false,
-    };
-
-    setMessages((prevMessages) =>
-      prevMessages.map((message) => (message.id === messageId ? retryMessage : message)),
-    );
-
-    await simulateAIResponse(retryMessage);
+    await sendMessage(question);
   };
 
   return (
@@ -110,7 +52,7 @@ export default function ChatPage() {
               key={message.id}
               message={message}
               isLoading={false}
-              retry={() => handleRetry(message.id)}
+              retry={() => retryMessage(message.id)}
             />
           ))}
 
@@ -130,13 +72,7 @@ export default function ChatPage() {
       </section>
 
       <footer className="chat-page__footer">
-        <form
-          className="chat-page__form"
-          onSubmit={(e) => {
-            e.preventDefault();
-            handleSendMessage();
-          }}
-        >
+        <form className="chat-page__form" onSubmit={handleSubmit}>
           <input
             value={inputValue}
             onChange={(e) => setInputValue(e.target.value)}
