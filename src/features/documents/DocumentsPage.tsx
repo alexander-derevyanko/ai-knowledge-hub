@@ -67,7 +67,13 @@ export default function DocumentsPage() {
   };
 
   const handleDocumentUpload = (data: DocumentUploadFormValues) => {
-    const type = getDocType(data.file[0].name);
+    const file = data.file[0];
+
+    if (!file) {
+      return;
+    }
+
+    const type = getDocType(file.name);
 
     if (!type) {
       return;
