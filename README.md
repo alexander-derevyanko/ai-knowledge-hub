@@ -1,73 +1,163 @@
-# React + TypeScript + Vite
+# AI Knowledge Hub
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+A learning project focused on building a modern knowledge management application with React and TypeScript, evolving it step by step toward a full-stack AI-powered platform.
 
-Currently, two official plugins are available:
+The project serves as a practical environment for exploring frontend architecture, React fundamentals, state management, asynchronous operations, testing, and modern web development practices.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+> **Current stage:** Week 1 — React Fundamentals  
+> **AI integration:** Mock responses only. No real AI API or backend is connected.
 
-## React Compiler
+## Features
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+### Dashboard
 
-## Expanding the ESLint configuration
+- Overview of the knowledge base with summary statistics.
+- Reusable document cards and recent documents.
+- Shared mock data across application features.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+### Document Management
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+- Browse documents in a list.
+- Search documents by title.
+- Filter documents by category.
+- Sort by update date and title.
+- Upload documents through a modal form.
+- Validate document title, category, and file format.
+- Add uploaded documents to the local application state without a backend.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+### AI Assistant
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+- Chat interface with user and assistant messages.
+- Controlled input and form submission.
+- Asynchronous mock responses with a simulated loading state.
+- Message history maintained in React state.
+- Source references displayed with assistant responses.
+- Loading and error handling.
+
+### Application Shell
+
+- Dashboard, Documents, Chat, and Settings routes.
+- Shared application layout with header and sidebar.
+- Reusable UI components.
+- Route handling, including a not-found page.
+
+## Tech Stack
+
+- **React** — component-based UI development.
+- **TypeScript** — static typing and explicit data models.
+- **Vite** — development server and build tooling.
+- **React Router** — client-side routing.
+- **React Hook Form** — form state and validation.
+- **Vitest** — unit and component testing.
+- **React Testing Library** — testing components through user-visible behavior.
+- **CSS** — component and page styling.
+
+## Architecture
+
+The project uses a feature-oriented structure to keep application code organized and responsibilities clear.
+
+```text
+src/
+├── app/                 # App entry point and routes config
+├── components/          # Shared UI components
+├── data/                # Mock application data
+├── features/
+│   ├── dashboard/       # Dashboard page and components
+│   ├── documents/       # Document list, filters, upload form
+│   └── chat/             # Chat UI, hooks, mock service, types
+├── layout/              # Application shell and navigation
+├── pages/               # Additional pages like 404
+├── test/                # Tests configuration
+├── types/               # Shared domain types
+├── utils/               # Shared utils
+└── main.tsx
 ```
 
-You can also install [eslint-plugin-react-x](https://npmx.dev/package/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://npmx.dev/package/eslint-plugin-react-dom) for React-specific lint rules:
+The exact structure may evolve as the application grows.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x';
-import reactDom from 'eslint-plugin-react-dom';
+### Architectural principles
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-]);
+- Keep UI components focused on presentation where practical.
+- Use props to pass data and callbacks between components.
+- Keep shared domain types and mock data separate from feature-specific UI.
+- Store changing application data in React state.
+- Derive filtered and sorted lists from the source state instead of duplicating derived data in state.
+- Update arrays immutably.
+- Encapsulate reusable stateful logic in custom hooks.
+- Separate mock asynchronous services from UI components.
+- Test important behavior and user interactions.
+
+## Getting Started
+
+### Prerequisites
+
+- Node.js (a current LTS version is recommended).
+- npm.
+
+### Installation
+
+Clone the repository and navigate to the project directory:
+
+```bash
+git clone <your-repository-url>
+cd ai-knowledge-hub
 ```
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
+
+```bash
+npm run dev
+```
+
+Open the local URL printed by Vite in your terminal.
+
+## Available Scripts
+
+Run the scripts configured in `package.json`:
+
+| Command                | Description                                                             |
+| ---------------------- | ----------------------------------------------------------------------- |
+| `npm run dev`          | Start the development server                                            |
+| `npm run build`        | Type-check and build the application, if configured in the build script |
+| `npm run lint`         | Run ESLint, if configured                                               |
+| `npm run test`         | Run the test suite, if configured                                       |
+| `npm run format`       | Run prettier                                                            |
+| `npm run format:check` | Run prettier check                                                      |
+
+## Current Limitations
+
+- Documents are stored in local React state and mock data; there is no persistent database.
+- File selection and document creation are simulated in the browser. Files are not uploaded to a server.
+- Chat responses are generated by a mock service; no LLM or external AI API is connected.
+- There is no authentication or multi-user persistence.
+- Data may reset when the application is reloaded.
+
+## Learning Roadmap
+
+The project is being developed incrementally, with each stage introducing new concepts.
+
+- **Week 1 — React Fundamentals:** application shell, routing, components, props, lists, state, search, filtering, sorting, forms, asynchronous UI, custom hooks, and testing.
+- **Week 2 — Next.js:** App Router, layouts, server and client components, routing, data fetching, and rendering strategies.
+- **Week 3 — NestJS:** backend fundamentals, modules, controllers, services, and API design.
+- **Week 4 — PostgreSQL and Prisma:** relational data modeling, database access, and persistence.
+- **Future stages:** Docker, LLM integration, retrieval-augmented generation (RAG), AI agents, MCP, evaluation, and security.
+
+The roadmap may evolve as the project develops.
+
+## Project Goals
+
+- Build a practical understanding of React beyond framework-to-framework syntax translation.
+- Apply maintainable frontend architecture and TypeScript practices.
+- Learn to test components and application behavior.
+- Progress from a frontend prototype to a full-stack application.
+- Explore how AI capabilities can be integrated into a real application architecture.
+
+---
+
+**Status:** React fundamentals stage completed; Next.js is the next planned stage.
