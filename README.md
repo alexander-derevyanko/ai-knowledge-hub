@@ -161,3 +161,17 @@ The roadmap may evolve as the project develops.
 ---
 
 **Status:** React fundamentals stage completed; Next.js is the next planned stage.
+
+## Screenshots
+
+<img width="1391" height="937" alt="image" src="https://github.com/user-attachments/assets/bb2f0388-9e59-4977-9529-b9623b595fc1" />
+
+<img width="1391" height="936" alt="image" src="https://github.com/user-attachments/assets/3f8b10d9-1db8-4bd4-9a73-5eea07ba1e58" />
+
+<img width="794" height="706" alt="image" src="https://github.com/user-attachments/assets/c37862ba-69b4-4d8f-933f-6b3374bdcd8b" />
+
+<img width="1393" height="939" alt="image" src="https://github.com/user-attachments/assets/757aa351-c5d8-4485-86d6-d64700d1c8d4" />
+
+
+
+
