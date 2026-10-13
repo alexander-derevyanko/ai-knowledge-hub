@@ -8,7 +8,7 @@ interface DocumentListProps {
 
 export default function DocumentList({ documents }: DocumentListProps) {
   return (
-    <section className="document-list">
+    <section className="document-list" data-testid="document-list">
       <div className="document-list__toolbar">
         <p className="document-list__count">
           {documents.length} {documents.length === 1 ? 'document' : 'documents'}

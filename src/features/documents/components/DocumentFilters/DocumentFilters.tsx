@@ -12,7 +12,7 @@ interface DocumentFiltersProps {
 
 export default function DocumentFilters(props: DocumentFiltersProps) {
   return (
-    <section className="filter-block">
+    <section className="filter-block" data-testid="document-filters">
       <div className="filter-block__search">
         <label htmlFor="search">Search</label>
 
@@ -25,6 +25,7 @@ export default function DocumentFilters(props: DocumentFiltersProps) {
           <input
             id="search"
             type="search"
+            data-testid="documents-search"
             value={props.searchQuery}
             onChange={props.handleSearchQuery}
             placeholder="Search documents..."
